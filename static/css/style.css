@@ -1,0 +1,230 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Base Styles */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Login Container */
+.login-container {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Login Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    color: #2e7d32;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.login-header p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* Login Form */
+.login-form label {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Login Footer */
+.login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Button Styling */
+.stButton > button {
+    background-color: #2e7d32 !important;
+    color: white !important;
+    font-weight: 500 !important;
+    border-radius: 5px !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+}
+
+.stButton > button:hover {
+    background-color: #1b5e20 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Logo Styling */
+.logo-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+/* Welcome Text */
+.welcome-text {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.welcome-text h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.welcome-text p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+    padding: 0 10px;
+    color: #777;
+    font-size: 14px;
+}
+
+/* User Type Toggle */
+.user-type-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.user-type-toggle button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.user-type-toggle button.active {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.user-type-toggle button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.user-type-toggle button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+/* Google Login Button */
+button[data-testid="baseButton-secondary"] {
+    background-color: white !important;
+    color: #757575 !important;
+    border: 1px solid #ddd !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    position: relative !important;
+}
+
+button[data-testid="baseButton-secondary"]::before {
+    content: '';
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+}
+
+/* Hide Streamlit Elements */
+/* #MainMenu {visibility: hidden;} */
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+/* Dashboard Styles */
+.dashboard-metrics {
+    background-color: #f1f8e9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+.metric-card {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.info-text {
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.risk-high {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.risk-medium {
+    color: #f57c00;
+    font-weight: bold;
+}
+
+.risk-low {
+    color: #388e3c;
+    font-weight: bold;
+}

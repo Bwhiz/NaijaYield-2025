@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+
+#data folder:
+NGA_2015_GHSP-W3_v02_M_CSV/
+*.csv
+*.parquet
+.streamlit/
+secrets.toml
