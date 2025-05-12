@@ -298,6 +298,7 @@ with tab3:
                 color_discrete_map={'Insufficient': '#e74c3c', 'Sufficient': '#2ecc71'})
     
     fig.update_traces(textposition='inside', textinfo='percent+label')
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)', font_color='#333333' )
     st.plotly_chart(fig, use_container_width=True)
 
 with tab4:
@@ -316,6 +317,7 @@ with tab4:
                     color_discrete_map={'Not Fully Repaid': '#e74c3c', 'Fully Repaid': '#2ecc71'})
         
         fig.update_traces(textposition='inside', textinfo='percent+label')
+        fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)', font_color='#333333' )
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
