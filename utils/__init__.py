@@ -1,1 +1,1 @@
-from .functions import load_css, add_bg_with_overlay, save_user_to_db, render_welcome_screen
+from .functions import get_duckdb_connection, load_css, add_bg_with_overlay, save_user_to_db, render_welcome_screen

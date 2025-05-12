@@ -16,3 +16,4 @@ NGA_2015_GHSP-W3_v02_M_CSV/
 *.parquet
 .streamlit/
 secrets.toml
+prototype.ipynb
