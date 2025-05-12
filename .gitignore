@@ -14,6 +14,6 @@ wheels/
 NGA_2015_GHSP-W3_v02_M_CSV/
 *.csv
 *.parquet
-.streamlit/
+# .streamlit/
 secrets.toml
 prototype.ipynb
