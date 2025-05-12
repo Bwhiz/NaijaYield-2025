@@ -16,7 +16,7 @@ st.set_page_config(
 )
 
 ROOT_DIR = Path(__file__).parent.resolve()
-load_css(os.path.join(ROOT_DIR, "static", "css", "style.css"))
+# load_css(os.path.join(ROOT_DIR, "static", "css", "style.css"))
 
 def set_naijayield_theme():
     """Set the NaijaYield brand theme with a soft green background"""
