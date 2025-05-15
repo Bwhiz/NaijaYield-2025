@@ -46,7 +46,7 @@ else:
 
     available_pages = {}
     home = st.Page("./page/Dashboard.py", title="General Dashboard", icon="📊", default=True)
-    household_analytics = st.Page("./page/hhid_analytics.py", title="Individual Analytcs", icon="👨‍🌾")
+    household_analytics = st.Page("./page/hhid_analytics.py", title="Individual Analytics", icon="👨‍🌾")
 
     pages = [home, household_analytics]
     pg = st.navigation(pages)
