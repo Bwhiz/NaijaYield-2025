@@ -316,20 +316,14 @@ if selected_household:
             score_components = {}
             
             # 1. Repayment history (40 points)
-            if 'IsFullyRepaid' in household_cred_loadid.columns:
-                # Convert encoding: 1 = Yes (fully repaid), 2 = No (not fully repaid)
-                # We need to transform this so that: Yes (1) = 100%, No (2) = 0%
-                
-                # Count loans that are fully repaid
+            repayment_score = 0
+            if not household_cred_loadid.empty and 'IsFullyRepaid' in household_cred_loadid.columns:
+                # Count loans that are fully repaid (IsFullyRepaid = 1 means fully repaid)
                 fully_repaid_count = (household_cred_loadid['IsFullyRepaid'] == 1).sum()
                 total_loans = len(household_cred_loadid)
-                st.write(f"Total loans : {total_loans}")
                 
                 # Calculate repayment rate (0-100%)
-                if total_loans > 0:
-                    repayment_rate = fully_repaid_count / total_loans
-                else:
-                    repayment_rate = 0
+                repayment_rate = fully_repaid_count / total_loans if total_loans > 0 else 0
                 
                 # Convert to score (0-40 points)
                 repayment_score = repayment_rate * 40
@@ -339,13 +333,13 @@ if selected_household:
                 max_score += 40
 
             # 2. Loan utilization (20 points)
+            utilization_score = 0
             if not household_cred_loadid.empty and 'LoanPurpose' in household_cred_loadid.columns:
                 # Higher score for agricultural and productive purposes
                 productive_purposes = [1, 2, 3, 4]  # Land, ag inputs, business
                 
                 # Count productive loans
-                productive_loans = household_cred_loadid[household_cred_loadid['LoanPurpose'].isin(productive_purposes)]
-                productive_count = len(productive_loans)
+                productive_count = household_cred_loadid[household_cred_loadid['LoanPurpose'].isin(productive_purposes)].shape[0]
                 total_count = len(household_cred_loadid)
                 
                 if total_count > 0:
@@ -355,16 +349,28 @@ if selected_household:
                 max_score += 20
             
             # 3. Financial inclusion (40 points)
-            if not household_cred_loadid.empty:
-                fin_score = fin_score * 0.4  # Convert 0-100 to 0-40
-                credit_score += fin_score
-                score_components['Financial Inclusion'] = fin_score
+            # Calculate financial inclusion score based on the metrics
+            if not household_fin.empty:
+                # Reuse the financial inclusion score calculated earlier
+                inclusion_metrics = {
+                    'Bank Account': (2 - household_fin['HasBankAccount'].mean()) * 100,
+                    'Cooperative': (2 - household_fin['UsedCooperative'].mean()) * 100,
+                    'Informal Savings': (2 - household_fin['UsedInformalSavingsGroups'].mean()) * 100,
+                    'Insurance': (2 - household_fin['HasInsurance'].mean()) * 100,
+                }
+                
+                # Calculate average inclusion score (0-100)
+                inclusion_values = list(inclusion_metrics.values())
+                financial_inclusion_score = sum(inclusion_values) / len(inclusion_values) if inclusion_values else 0
+                
+                # Convert to 0-40 points
+                fin_inclusion_score = financial_inclusion_score * 0.4
+                credit_score += fin_inclusion_score
+                score_components['Financial Inclusion'] = fin_inclusion_score
                 max_score += 40
             
             # Calculate final score (scaled to 100)
             final_score = (credit_score / max_score * 100) if max_score > 0 else 0
-            # st.write(f"{repayment_score}, {credit_score}, {credit_score}")
-            st.write(f"This is the final score : {final_score}")
             
             # Determine risk category
             if final_score >= 80:
@@ -402,7 +408,7 @@ if selected_household:
             ))
             
             fig.update_layout(height=150, margin=dict(l=10, r=10, t=50, b=10), paper_bgcolor='rgba(0,0,0,0)',
-                              plot_bgcolor='rgba(0,0,0,0)', font_color='#333333' )
+                            plot_bgcolor='rgba(0,0,0,0)', font_color='#333333')
             st.plotly_chart(fig, use_container_width=True)
             
             # Show loan recommendation

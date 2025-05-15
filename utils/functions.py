@@ -19,29 +19,6 @@ def load_css(css_file):
     with open(css_file, 'r') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Function for background image with overlay
-# def add_bg_with_overlay(image_path):
-#     """Add a background image with a dark overlay"""
-#     if os.path.exists(image_path):
-#         with open(image_path, "rb") as image_file:
-#             encoded_string = base64.b64encode(image_file.read()).decode()
-        
-#         # Add custom CSS with the background image and a dark overlay
-#         st.markdown(
-#             f"""
-#             <style>
-#             .stApp {{
-#                 background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(data:image/jpeg;base64,{encoded_string});
-#                 background-size: cover;
-#                 background-position: center;
-#                 background-repeat: no-repeat;
-#                 background-attachment: fixed;
-#             }}
-#             </style>
-#             """,
-#             unsafe_allow_html=True
-#         )
-
 def add_bg_with_overlay(transparent=None):
 
     if transparent:
@@ -130,15 +107,6 @@ def render_welcome_screen():
         
         st.markdown('</div>', unsafe_allow_html=True)
     
-    # # Add current date-time at the bottom of the page
-    # now = datetime.now()
-    # current_time = now.strftime("%A, %B %d, %Y %I:%M %p")
-    # st.markdown(f"""
-    # <div style="position: fixed; bottom: 10px; width: 100%; text-align: center; color: rgba(255,255,255,0.7); font-size: 12px;">
-    #     {current_time} | AgriConnect Summit Hackathon 2025
-    # </div>
-    # """, unsafe_allow_html=True)
-
 
 def set_naijayield_theme():
     """Set the NaijaYield brand theme with a soft green background"""

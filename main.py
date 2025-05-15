@@ -8,7 +8,7 @@ sidebar_state = "expanded" if st.experimental_user.is_logged_in else "collapsed"
 
 # Configure page
 st.set_page_config(
-    page_title="AgriPreneur Finance Platform | Login",
+    page_title="NaijaYield Finance Platform | Login",
     page_icon="🌱",
     layout="wide",
     initial_sidebar_state=sidebar_state
