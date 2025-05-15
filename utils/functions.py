@@ -56,6 +56,40 @@ def add_bg_with_overlay(transparent=None):
                 background-repeat: no-repeat;
                 background-attachment: fixed;
             }
+
+            .login-notice {
+                margin-top: 20px;
+                padding: 15px;
+                background-color: rgba(245, 249, 245, 0.1); 
+                border-radius: 8px;
+                border-left: 3px solid #2E7D32;
+            }
+
+            .security-badge {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 8px;
+            }
+
+            .security-icon {
+                font-size: 1.2rem;
+                color: #2E7D32;
+                margin-right: 8px;
+            }
+
+            .security-text {
+                font-weight: bold;
+                color: #2E7D32;
+            }
+
+            .login-notice p {
+                font-size: 0.9rem;
+                color: #B2BEB5;  /* Off-white */
+                margin: 0;
+                line-height: 1.5;
+                font-weight: 500;
+            }
             </style>
             """,
             unsafe_allow_html=True
@@ -95,10 +129,17 @@ def render_welcome_screen():
         """, unsafe_allow_html=True)
         
         st.write("")
-        if st.button("Log in/register with Google", key="google_login"):
+        if st.button("Log in with Google", key="google_login"):
             st.login()  
         
         st.markdown("""
+        <div class="login-notice">
+            <div class="security-badge">
+                <span class="security-icon">🔒</span>
+                <span class="security-text">Your data is secure</span>
+            </div>
+            <p>This login is used for authentication only. We don't collect or store your Google account data.</p>
+        </div>
         <div class="login-footer">
             <p>By signing in, you agree to our <a href="#" style="color: #2e7d32;">Terms of Service</a> and <a href="#" style="color: #2e7d32;">Privacy Policy</a></p>
             <p style="margin-top: 10px;">© 2025 NaijaYield. All rights reserved.</p>
@@ -106,7 +147,6 @@ def render_welcome_screen():
         """, unsafe_allow_html=True)
         
         st.markdown('</div>', unsafe_allow_html=True)
-    
 
 def set_naijayield_theme():
     """Set the NaijaYield brand theme with a soft green background"""
