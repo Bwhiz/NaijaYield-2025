@@ -41,12 +41,16 @@ else:
         st.write(f'👋 Welcome to **NaijaYield**, {user_name}',)
         st.button("Log out", on_click=st.logout)
 
-    available_pages = {}
     home = st.Page("./page/Dashboard.py", title="General Dashboard", icon="📊", default=True)
     household_analytics = st.Page("./page/hhid_analytics.py", title="Individual Analytics", icon="👨‍🌾")
     farmer_education = st.Page("./page/farmer_education.py", title="Credit Score Education", icon="💡")
+    farmer_portfolio = st.Page("./page/farmer_portfolio.py", title="Farm Portfolio (Coming Soon)", icon="🆕")
 
-    pages = [home, household_analytics, farmer_education]
-    pg = st.navigation(pages)
+    # pages = [home, household_analytics, farmer_education]
+    available_pages = {
+            "Main Features": [home, household_analytics, farmer_education],
+            "Coming Soon": [farmer_portfolio]
+        }
+    pg = st.navigation(available_pages)
 
     pg.run()
