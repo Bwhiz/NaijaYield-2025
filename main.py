@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 from pathlib import Path
-
 from utils import load_css, add_bg_with_overlay, save_user_to_db, render_welcome_screen, set_naijayield_theme
 
 sidebar_state = "expanded" if st.experimental_user.is_logged_in else "collapsed"
@@ -21,7 +20,6 @@ load_css(os.path.join(ROOT_DIR, "static", "css", "style.css"))
 
 if not st.experimental_user.is_logged_in:
     render_welcome_screen()
-
 else:
     set_naijayield_theme()
 
@@ -37,7 +35,6 @@ else:
         st.session_state['user_processed'] = True
 
     user_name = st.experimental_user.name
-    #st.write(f"**{user_name}**")
 
     with st.sidebar:
         st.write("")

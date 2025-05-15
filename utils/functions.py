@@ -7,8 +7,6 @@ import duckdb
 from datetime import datetime
 
 ROOT_DIR = Path(__file__).parent.resolve()
-
-
 @st.cache_resource(show_spinner='Connecting... 🔌')
 def get_duckdb_connection():
     motherduck_token = st.secrets["motherduck_token"]
@@ -88,8 +86,7 @@ def add_bg_with_overlay(transparent=None):
 
 def render_welcome_screen():
     """Render the welcome screen with login button"""
-    # Add background image
-    # bg_image_path = os.path.join(ROOT_DIR, "static", "images", "Agriculture_background.jpg")
+    
     add_bg_with_overlay()
         
     # Welcome text
@@ -120,7 +117,6 @@ def render_welcome_screen():
             </div>
         """, unsafe_allow_html=True)
         
-        #st.warning('Please Login/Register to Access NaijaYield')
         st.write("")
         if st.button("Log in/register with Google", key="google_login"):
             st.login()  
