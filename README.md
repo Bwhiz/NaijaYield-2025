@@ -96,7 +96,6 @@
 ## 📌 Notes
 
 - Ensure DuckDB is accessible locally or via MotherDuck.
-- The app is designed with background customization and interactive plots.
 
 ---
 
